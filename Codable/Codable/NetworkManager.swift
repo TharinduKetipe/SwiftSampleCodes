@@ -4,9 +4,7 @@
 //
 //  Created by Tharindu Ketipearachchi on 2022-10-02.
 //
-
 import Foundation
-
 
 final class NetworkManager {
     
@@ -27,6 +25,11 @@ final class NetworkManager {
             }
             
             let jsonDecoder = JSONDecoder()
+            
+            /* Just add following line to JSONDecoder to convert all your snake_case response to camerCase without using CodingKeys enum inside your Codable Model
+             */
+            //jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             do {
                 let body = try jsonDecoder.decode(Response.self, from: content)
                 print(body)
